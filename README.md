@@ -1,5 +1,5 @@
 # MP2: Frame Manager
 
-### Read design.pdf for more details.
+### Read docs/design.pdf for more details.
 
 
