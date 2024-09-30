@@ -1,4 +1,4 @@
 # MP3: Page Table Management
 
-### Read docs/design.pdf for more details.
-### Ouputs are present under /outputs
+1. Read docs/design.pdf for more details.
+2. Ouputs are present under /outputs
