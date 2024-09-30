@@ -14,6 +14,8 @@ endif
 
 GCC_OPTIONS = -m32 -nostdlib -fno-builtin -nostartfiles -nodefaultlibs -fno-exceptions -fno-rtti -fno-stack-protector -fleading-underscore -fno-asynchronous-unwind-tables -fno-pie
 
+DONE_CLEAN: cont_frame_pool.o
+
 all: kernel.bin
 
 clean:
@@ -79,8 +81,8 @@ paging_low.o: paging_low.asm paging_low.H
 page_table.o: page_table.C page_table.H paging_low.H
 	$(GCC) $(GCC_OPTIONS) -c -o page_table.o page_table.C
 
-cont_frame_pool.o: cont_frame_pool.C cont_frame_pool.H
-	$(GCC) $(GCC_OPTIONS) -c -o cont_frame_pool.o cont_frame_pool.C
+#cont_frame_pool.o: cont_frame_pool.C cont_frame_pool.H
+#	$(GCC) $(GCC_OPTIONS) -c -o cont_frame_pool.o cont_frame_pool.C
 
 # ==== KERNEL MAIN FILE =====
 

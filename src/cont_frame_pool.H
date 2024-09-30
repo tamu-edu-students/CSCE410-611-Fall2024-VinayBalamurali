@@ -43,14 +43,34 @@ class ContFramePool {
 private:
     /* -- DEFINE YOUR CONT FRAME POOL DATA STRUCTURE(s) HERE. */
     
+    /* ---- Bag of created frame pools */
     
+    static ContFramePool * head;
+    static ContFramePool * tail;    
+ 
+    ContFramePool * next;
+    ContFramePool * prev;
+   
+    static void add_to_bag(ContFramePool * _new_pool);
+    static void remove_from_bag(ContFramePool * _pool);
+   
+    /* ---- Info about this frame pool */
+    unsigned char * bitmap;        // We implement the simple frame pool with a bitmap
+    unsigned long   base_frame_no; // Where does the frame pool start in phys mem?
+    unsigned long   nframes;       // Size of the frame pool
+    unsigned long   info_frame_no; // First of the frames with meta data about pool.
     
-    /* ---- STATE MANAGEMENT */
+    /* ---- State management */
     
-    enum class FrameState {Free, Used, HoS};
+    enum class FrameState {Free, Used, HoS, INVALID};
 
     FrameState get_state(unsigned long _frame_no);
     void set_state(unsigned long _frame_no, FrameState _state);
+
+    /* ---- Release function of the pool */
+
+    void pool_release_frames(unsigned long _first_frame_no);    
+    
     
 public:
 
@@ -104,13 +124,18 @@ public:
      pool's release_frame function.
      */
     
+    bool contains(unsigned long _frame_no);
+    /* 
+    Returns whether the given frame is part of this frame pool.
+    */
+    
     static unsigned long needed_info_frames(unsigned long _n_frames);
     /*
      Returns the number of frames needed to manage a frame pool of size _n_frames.
-     The number returned here depends on the implementation of the frame pool and 
+     The number returned here depends on the implementation of the frame pool and
      on the frame size.
-     EXAMPLE: For FRAME_SIZE = 4096 and a bitmap with a single bit per frame 
-     (not appropriate for contiguous allocation) one would need one frame to manage a 
+     EXAMPLE: For FRAME_SIZE = 4096 and a bitmap with a single bit per frame
+     (not appropriate for contiguous allocation) one would need one frame to manage a
      frame pool with up to 8 * 4096 = 32k frames = 128MB of memory!
      This function would therefore return the following value:
        _n_frames / 32k + (_n_frames % 32k > 0 ? 1 : 0) (always round up!)

@@ -147,12 +147,11 @@ int main() {
     PageTable pt;
     
     pt.load();
+    PageTable::enable_paging();
 
     Console::puts("WE TURNED ON PAGING!\n");
     Console::puts("If we see this message, the page tables have been\n");
     Console::puts("set up mostly correctly.\n");
-
-    PageTable::enable_paging();
 
     /* -- MOST OF WHAT WE NEED IS SETUP. THE KERNEL CAN START. */
     
