@@ -52,6 +52,8 @@ private:
     static ContFramePool * kernel_mem_pool;    /* Frame pool for the kernel memory */
     static ContFramePool * process_mem_pool;   /* Frame pool for the process memory */
     static unsigned long   shared_size;        /* size of shared address space */
+
+    static VMPool         *poolHead;           /* pointer to head of the Linked List to access Virtual Memory pools*/
     
     /* DATA FOR CURRENT PAGE TABLE */
     unsigned long        * page_directory;     /* where is page directory located? */
