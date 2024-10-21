@@ -17,7 +17,7 @@ GCC_OPTIONS = -m32 -nostdlib -fno-builtin -nostartfiles -nodefaultlibs -fno-exce
 all: kernel.bin
 
 clean:
-	rm -f *.o *.bin
+	rm -f $(filter-out cont_frame_pool.o, $(wildcard *.o *.bin))
 
 run:
 	qemu-system-x86_64 -kernel kernel.bin -serial stdio
@@ -78,9 +78,6 @@ paging_low.o: paging_low.asm paging_low.H
 
 page_table.o: page_table.C page_table.H paging_low.H vm_pool.H
 	$(GCC) $(GCC_OPTIONS) -c -o page_table.o page_table.C
-
-cont_frame_pool.o: cont_frame_pool.C cont_frame_pool.H
-	$(GCC) $(GCC_OPTIONS) -c -o cont_frame_pool.o cont_frame_pool.C
 
 vm_pool.o: vm_pool.C vm_pool.H page_table.H
 	$(GCC) $(GCC_OPTIONS) -c -o vm_pool.o vm_pool.C

@@ -35,6 +35,7 @@ PageTable::PageTable()
    this->page_directory = (unsigned long *)(pdeFrame * PAGE_SIZE);
 
    // 1 Page table page for mapping to the first entry in the PDE.
+   // This is gotten from the Process Memory pool.
    unsigned long ptpFrame = process_mem_pool->get_frames(1);
    unsigned long * page_table_page;
    page_table_page = (unsigned long *)(ptpFrame * PAGE_SIZE);
@@ -124,27 +125,22 @@ void PageTable::handle_fault(REGS * _r)
        assert(false);
    }
 
-   VMPool *node = poolHead;
+   VMPool *node = PageTable::poolHead;
 
-   if (node == nullptr)
-   {
-       Console::puts("Region cannot be freed! VM pool does not exist.\n");
-       assert(false);
-   }
-
-   bool isLegitmate = false;
+   bool isLegitimate = false;
    while (node != nullptr)
    {
        if (node->is_legitimate(faultAddress))
        {
-           isLegitmate = true;
+           isLegitimate = true;
+           Console::puts("Legitimate address. Breaking\n");
            break;
        }
 
        node = node->next;
    }
 
-   if (!(isLegitmate))
+   if ((node != nullptr) && !(isLegitimate))
    {
        Console::puts("Not a legitimate address! Memory has not been allocated for this region!\n");
        assert(false);
@@ -159,6 +155,7 @@ void PageTable::handle_fault(REGS * _r)
    // Check if the Page Directory entry is present.
    if ((curr_page_dir[pdeIndex] & 0x1) == 1)
    {
+       // | 1023 | PDE | offset |
        unsigned long frame = process_mem_pool->get_frames(1);
        unsigned long *newPage = (unsigned long *)(frame * PAGE_SIZE);
 
@@ -169,13 +166,14 @@ void PageTable::handle_fault(REGS * _r)
    else
    {
        // PDE is not valid.
+       // | 1023 | 1023 | offset |
        unsigned long ptpFrame = process_mem_pool->get_frames(1);
        unsigned long *newPageTable = (unsigned long *)(ptpFrame * PAGE_SIZE);
 
        unsigned long *pdeEntry = (unsigned long *)(0xFFFFF << 12);
        pdeEntry[pdeIndex] = (unsigned long)newPageTable | 0x3;
 
-       // Set other values of the page table page as follows:
+      // Set other values of the page table page as follows:
       // 0 --> kernel mode
       // 1 --> read/write
       // 0 --> page not present.
@@ -184,13 +182,21 @@ void PageTable::handle_fault(REGS * _r)
           newPageTable[i] = 0x2;
       }
 
+      unsigned long frame = process_mem_pool->get_frames(1);
+      unsigned long *newPage = (unsigned long *)(frame * PAGE_SIZE);
+
+      unsigned long *pageEntry = (unsigned long *)((0x3FF << 22) | (pdeIndex << 12));
+
+      pageEntry[ptpIndex] =  (unsigned long)newPage | 0x3;
    }
 
    Console::puts("handled page fault\n");
 
-} // // PageTable::handle_fault
+} // PageTable::handle_fault
 
 
+// Method to register a new virtual memory pool
+// to the linked list of pools.
 void PageTable::register_pool(VMPool * _vm_pool)
 {
     if (PageTable::poolHead == nullptr)
@@ -200,6 +206,7 @@ void PageTable::register_pool(VMPool * _vm_pool)
     }
     else
     {
+        // Traverse to the end of linked list and insert.
         VMPool *currNode = PageTable::poolHead;
 
         while (currNode->next != nullptr)
@@ -215,18 +222,25 @@ void PageTable::register_pool(VMPool * _vm_pool)
 } // PageTable::register_pool
 
 
+// Method to free frame associated with a page, given the page no.s
 void PageTable::free_page(unsigned long _page_no)
 {
+    // Fetch Page Directory Index.
     unsigned long pdeIndex = ((_page_no >> 22) & 0x3FF);
 
+    // Fetch Page Table Page Index.
     unsigned long ptpIndex = ((_page_no >> 12) & 0x3FF);
 
+    // Page Table Entry address = 1023 | PDE | Offset
     unsigned long *pageTablePage = (unsigned long *)((0x3FF << 22) | (pdeIndex << 12));
 
+    // Fetch frame no and release it.
     unsigned long frame = (pageTablePage[ptpIndex] & 0xFFFFF000) / PAGE_SIZE;
-
     process_mem_pool->release_frames(frame);
-
+    // Mark the entry as invalid.
+    // 0 --> kernel mode
+    // 1 --> read/write
+    // 0 --> page not present.
     pageTablePage[ptpIndex] = pageTablePage[ptpIndex] | 0x2;
 
     // Flush the TLB.

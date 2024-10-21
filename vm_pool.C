@@ -43,6 +43,7 @@
 /* METHODS FOR CLASS   V M P o o l */
 /*--------------------------------------------------------------------------*/
 
+// Constructor.
 VMPool::VMPool(unsigned long  _base_address,
                unsigned long  _size,
                ContFramePool *_frame_pool,
@@ -57,8 +58,10 @@ VMPool::VMPool(unsigned long  _base_address,
     next = nullptr;
     totalRegions = 0;
 
+    // Register the pool with PageTable object.
     pageTable->register_pool(this);
 
+    // Map the first entry with the baseAddress of this pool.
     vmRegionInfo *region = (vmRegionInfo *)baseAddress;
     region[0].baseAddress = baseAddress;
     region[0].length = PageTable::PAGE_SIZE;
@@ -73,6 +76,8 @@ VMPool::VMPool(unsigned long  _base_address,
 } // VMPool::VMPool
 
 
+// Method to allocate a virtual memory region given
+// _size in bytes.
 unsigned long VMPool::allocate(unsigned long _size)
 {
     if (_size > availableMemory)
@@ -92,7 +97,7 @@ unsigned long VMPool::allocate(unsigned long _size)
     pagesRequired = pagesRequired + extraPages;
 
     unsigned long requiredMemory = pagesRequired * PageTable::PAGE_SIZE;
-    unsigned long newBaseAddress = allRegions[totalRegions - 1].baseAddress + allRegions[totalRegions - 1].length;;
+    unsigned long newBaseAddress = allRegions[totalRegions - 1].baseAddress + allRegions[totalRegions - 1].length;
     // totalRegions indexes the region that is being allocated.
     allRegions[totalRegions].baseAddress = newBaseAddress;
     allRegions[totalRegions].length = requiredMemory;
@@ -108,6 +113,8 @@ unsigned long VMPool::allocate(unsigned long _size)
 } // VMPool::allocate
 
 
+// Method to release a region of virtual memory,
+// starting from address _start_address.
 void VMPool::release(unsigned long _start_address)
 {
     int indexRegion = -1;
@@ -116,10 +123,12 @@ void VMPool::release(unsigned long _start_address)
     {
         if (allRegions[i].baseAddress == _start_address)
         {
+            // Found a match for the region.
             indexRegion = i;
         }
     }
 
+    // Crash the kernel if a match is not found.
     if (indexRegion == -1)
     {
         Console::puts("Given start address not found in the current VM pool!\n");
@@ -127,8 +136,9 @@ void VMPool::release(unsigned long _start_address)
     }
 
     unsigned long pagesToRelease = (allRegions[indexRegion].length / PageTable::PAGE_SIZE);
-
     unsigned long tempAddress = _start_address;
+
+    // Release frames iteratively.
     while (pagesToRelease > 0)
     {
         pageTable->free_page(tempAddress);
@@ -154,10 +164,12 @@ void VMPool::release(unsigned long _start_address)
 } // VMPool::release
 
 
+// Method to verify if an address belonging to virtual memory pool
+// is valid by performing a bounds check.
 bool VMPool::is_legitimate(unsigned long _address)
 {
     Console::puts("Checked whether address is part of an allocated region.\n");
-    
+
     if ((_address < baseAddress) || (_address > (baseAddress + size)))
     {
         return false;

@@ -57,7 +57,7 @@ private:
    unsigned long  totalRegions;
    unsigned long  availableMemory;
 
-   vmRegionInfo   *allRegions;
+   struct vmRegionInfo   *allRegions;
 
 public:
    VMPool *next; /* Pointer to next node */
