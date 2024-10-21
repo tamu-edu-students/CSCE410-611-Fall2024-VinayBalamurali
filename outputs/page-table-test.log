@@ -1,0 +1,49 @@
+Darwin
+qemu-system-x86_64 -kernel kernel.bin -serial stdio
+Installed exception handler at ISR <0>
+Installed interrupt handler at IRQ <0>
+Frame Pool initialized
+Frame Pool initialized
+POOLS INITIALIZED!
+Installed exception handler at ISR <14>
+Initialized Paging System
+Constructed Page Table object
+Loaded page table
+Enabled paging
+Hello World!
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Handle Fault: Page is not present.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Handle Fault: Page is not present.
+handled page fault
+handled page fault
+DONE WRITING TO MEMORY. Now testing...
+Test Passed! Congratulations!
+YOU CAN SAFELY TURN OFF THE MACHINE NOW.
+One second has passed
+One second has passed
+INTERRUPT NO: 1
+NO DEFAULT INTERRUPT HANDLER REGISTERED
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed

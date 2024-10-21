@@ -1,0 +1,1026 @@
+Darwin
+qemu-system-x86_64 -kernel kernel.bin -serial stdio
+Installed exception handler at ISR <0>
+Installed interrupt handler at IRQ <0>
+Frame Pool initialized
+Frame Pool initialized
+POOLS INITIALIZED!
+Installed exception handler at ISR <14>
+Initialized Paging System
+Constructed Page Table object
+Loaded page table
+Enabled paging
+Hello World!
+registered VM pool
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Handle Fault: Page is not present.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Handle Fault: Page is not present.
+handled page fault
+handled page fault
+handled page fault
+Constructed VMPool object.
+registered VM pool
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Checked whether address is part of an allocated region.
+Handle Fault: Page is not present.
+handled page fault
+handled page fault
+Constructed VMPool object.
+VM Pools successfully created!
+I am starting with an extensive test
+of the VM Pool memory allocator.
+Please be patient...
+Testing the memory allocation on code_pool...
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Testing the memory allocation on heap_pool...
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+One second has passed
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+EXCEPTION DISPATCHER: exc_no = <14>
+Page fault exception triggered!
+Checked whether address is part of an allocated region.
+Checked whether address is part of an allocated region.
+Legitimate address. Breaking
+Handle Fault: Page is not present.
+handled page fault
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Allocated region of memory.
+Checked whether address is part of an allocated region.
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Loaded page table
+freed page
+Released region of memory.
+Test Passed! Congratulations!
+YOU CAN SAFELY TURN OFF THE MACHINE NOW.
+One second has passed
+INTERRUPT NO: 1
+NO DEFAULT INTERRUPT HANDLER REGISTERED
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
+One second has passed
