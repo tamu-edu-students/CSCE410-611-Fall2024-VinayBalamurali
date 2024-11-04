@@ -23,17 +23,19 @@
 
 /* -- COMMENT/UNCOMMENT THE FOLLOWING LINE TO EXCLUDE/INCLUDE SCHEDULER CODE */
 
-//#define _USES_SCHEDULER_
+#define _USES_SCHEDULER_
 /* This macro is defined when we want to force the code below to use
    a scheduler.
    Otherwise, no scheduler is used, and the threads pass control to each
    other in a co-routine fashion.
 */
 
+#define _USES_ROUND_ROBIN_SCHEDULER_
+/* Macro to use a Round Robin Scheduler */
 
 /* -- UNCOMMENT THE FOLLOWING LINE TO MAKE THREADS TERMINATING */
 
-//#define _TERMINATING_FUNCTIONS_
+#define _TERMINATING_FUNCTIONS_
 /* This macro is defined when we want the thread functions to return, and so
    terminate their thread.
    Otherwise, the thread functions don't return, and the threads run forever.
@@ -52,6 +54,7 @@
 #include "interrupts.H"
 
 #include "simple_timer.H"    /* TIMER MANAGEMENT  */
+#include "EOQTimer.H"
 
 #include "frame_pool.H"      /* MEMORY MANAGEMENT */
 #include "mem_pool.H"
@@ -152,7 +155,9 @@ void fun1() {
         for (int i = 0; i < 10; i++) {
             Console::puts("FUN 1: TICK ["); Console::puti(i); Console::puts("]\n");
         }
+#ifndef _USES_ROUND_ROBIN_SCHEDULER_
         pass_on_CPU(thread2);
+#endif
     }
 }
 
@@ -171,7 +176,9 @@ void fun2() {
         for (int i = 0; i < 10; i++) {
             Console::puts("FUN 2: TICK ["); Console::puti(i); Console::puts("]\n");
         }
+#ifndef _USES_ROUND_ROBIN_SCHEDULER_
         pass_on_CPU(thread3);
+#endif
     }
 }
 
@@ -184,7 +191,9 @@ void fun3() {
         for (int i = 0; i < 10; i++) {
 	    Console::puts("FUN 3: TICK ["); Console::puti(i); Console::puts("]\n");
         }
+#ifndef _USES_ROUND_ROBIN_SCHEDULER_
         pass_on_CPU(thread4);
+#endif
     }
 }
 
@@ -197,7 +206,9 @@ void fun4() {
         for (int i = 0; i < 10; i++) {
 	    Console::puts("FUN 4: TICK ["); Console::puti(i); Console::puts("]\n");
         }
+#ifndef _USES_ROUND_ROBIN_SCHEDULER_
         pass_on_CPU(thread1);
+#endif
     }
 }
 
@@ -250,17 +261,19 @@ int main() {
     /* Question: Why do we want a timer? We have it to make sure that 
                  we enable interrupts correctly. If we forget to do it,
                  the timer "dies". */
-
+#ifndef _USES_ROUND_ROBIN_SCHEDULER_
     SimpleTimer timer(100); /* timer ticks every 10ms. */
     InterruptHandler::register_handler(0, &timer);
     /* The Timer is implemented as an interrupt handler. */
+#endif
 
 #ifdef _USES_SCHEDULER_
-
     /* -- SCHEDULER -- IF YOU HAVE ONE -- */
- 
-    SYSTEM_SCHEDULER = new Scheduler();
-
+    #ifdef _USES_ROUND_ROBIN_SCHEDULER_
+        SYSTEM_SCHEDULER = new RoundRobinScheduler();
+    #else //  Use FIFO scheduler
+        SYSTEM_SCHEDULER = new Scheduler();
+    #endif
 #endif
 
     /* NOTE: The timer chip starts periodically firing as
@@ -309,8 +322,11 @@ int main() {
 #endif
 
     /* -- KICK-OFF THREAD1 ... */
-
     Console::puts("STARTING THREAD 1 ...\n");
+#ifdef _USES_ROUND_ROBIN_SCHEDULER_
+    EOQTimer rrTimer(5, SYSTEM_SCHEDULER);
+    InterruptHandler::register_handler(0, &rrTimer);
+#endif
     Thread::dispatch_to(thread1);
 
     /* -- AND ALL THE REST SHOULD FOLLOW ... */

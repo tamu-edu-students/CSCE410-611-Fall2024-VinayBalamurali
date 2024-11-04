@@ -20,7 +20,7 @@ clean:
 	rm -f *.o *.bin
 
 run:
-	qemu-system-x86_64 -kernel kernel.bin 
+	qemu-system-x86_64 -kernel kernel.bin -serial stdio 
 	
 debug:
 	qemu-system-x86_64 -s -S -kernel kernel.bin
@@ -70,6 +70,9 @@ console.o: console.C console.H
 simple_timer.o: simple_timer.C simple_timer.H
 	$(GCC) $(GCC_OPTIONS) -c -o simple_timer.o simple_timer.C
 
+EOQTimer.o: EOQTimer.C EOQTimer.H
+	$(GCC) $(GCC_OPTIONS) -c -o EOQTimer.o EOQTimer.C
+
 # ==== MEMORY =====
 
 frame_pool.o: frame_pool.C frame_pool.H 
@@ -91,14 +94,14 @@ scheduler.o: scheduler.C scheduler.H thread.H
 
 # ==== KERNEL MAIN FILE =====
 
-kernel.o: kernel.C machine.H console.H gdt.H idt.H irq.H exceptions.H interrupts.H simple_timer.H frame_pool.H mem_pool.H thread.H scheduler.H
+kernel.o: kernel.C machine.H console.H gdt.H idt.H irq.H exceptions.H interrupts.H simple_timer.H EOQTimer.H frame_pool.H mem_pool.H thread.H scheduler.H
 	$(GCC) $(GCC_OPTIONS) -c -o kernel.o kernel.C
 
 kernel.bin: start.o utils.o kernel.o \
    assert.o console.o gdt.o idt.o irq.o exceptions.o \
-   interrupts.o simple_timer.o frame_pool.o mem_pool.o \
+   interrupts.o simple_timer.o EOQTimer.o frame_pool.o mem_pool.o \
    thread.o threads_low.o scheduler.o machine.o machine_low.o 
 	$(LD) -melf_i386 -T linker.ld -o kernel.bin start.o utils.o kernel.o \
    assert.o console.o gdt.o idt.o irq.o exceptions.o interrupts.o \
-   simple_timer.o frame_pool.o mem_pool.o \
+   simple_timer.o EOQTimer.o frame_pool.o mem_pool.o \
    thread.o threads_low.o scheduler.o machine.o machine_low.o

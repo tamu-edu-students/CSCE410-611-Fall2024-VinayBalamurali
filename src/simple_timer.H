@@ -34,7 +34,7 @@
 
 class SimpleTimer : public InterruptHandler {
 
-private:
+protected:
 
   /* How long has the system been running? */
   unsigned long seconds; 

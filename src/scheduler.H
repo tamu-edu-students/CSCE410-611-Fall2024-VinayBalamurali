@@ -20,6 +20,7 @@
 /*--------------------------------------------------------------------------*/
 
 #include "thread.H"
+#include "console.H"
 
 /*--------------------------------------------------------------------------*/
 /* !!! IMPLEMENTATION HINT !!! */
@@ -51,13 +52,159 @@
  */
 
 /*--------------------------------------------------------------------------*/
+/* Ready Queue  and Node data structure */
+/*--------------------------------------------------------------------------*/
+
+// Data structure to hold a Node to be inserted in the ready queue.
+// The data is a pointer to the thread to be executed.
+// Has a self pointer to the next node in the linked list.
+class Node
+{
+public:
+
+   Thread *threadPtr;  // Pointer to the 'to be executed' thread.
+   struct Node *next;  // Pointer to next node.
+
+public:
+
+   // Constructor.
+   Node(Thread *_thread)
+   {
+      this->threadPtr = _thread;
+      this->next = nullptr;
+   }
+
+};
+
+
+// Class to implement the ready queue.
+class schedulerQueue
+{
+
+private:
+   Node *head;  // 'Head' or 'front' of queue.
+   Node *tail;  // 'Tail' or 'rear' of queue.
+   unsigned int length;  // size of queue.
+
+public:
+
+   // Constructor.
+   schedulerQueue(void)
+   {
+      head = nullptr;
+      tail = nullptr;
+      length = 0;
+   }
+
+
+   // Method to add an Thread to the ready queue
+   // at the tail.
+   void enqueue(Thread *_thread)
+   {
+      Node *newNode = new Node(_thread);
+      if (tail == nullptr)
+      {
+         tail = newNode;
+         head = tail;
+         length = 1;
+         return;
+      }
+
+      tail->next = newNode;
+      tail = newNode;
+      length ++;
+      return;
+   }
+
+   // Method to remove the element from the front
+   // of the queue to be dispatched to the CPU.
+   Thread* dequeue(void)
+   {
+      if (head == nullptr)
+      {
+         Console::puts("Scheduler queue is empty. Nothing to dispatch!\n");
+         return nullptr;
+      }
+
+      Node *pop = head;
+      Thread *_thread = pop->threadPtr;
+      head = head->next;
+
+      if (head == nullptr)
+      {
+         tail = nullptr;
+      }
+
+      length --;
+      delete pop;
+      return _thread;
+      
+   }
+
+   // Method to remove a thread from the ready queue
+   // as it got terminated.
+   void removeThreadById(Thread* _thread)
+   {
+      Node *curr = head;
+      Node *prev = nullptr;
+
+      while ((curr != nullptr) && (curr->threadPtr != _thread))
+      {
+         prev = curr;
+         curr = curr->next;
+      }
+
+      if (curr == nullptr)
+      {
+         Console::puts("Cannot terminate given thread!\n");
+         return;
+      }
+
+      // If current pointer is at the front,
+      // just peform a dequeue.
+      if (curr == head)
+      {
+         Console::puts("Terminating thread at the front.\n");
+         Thread *termThread = this->dequeue();
+         return;
+      }
+
+      // Node to be deleted is the tail.
+      if (curr == tail)
+      {
+         Console::puts("Terminating thread at the tail.\n");
+         tail = prev;
+         delete(curr);
+         length --;
+         return;
+      }
+
+      Console::puts("Terminating thread in Ready Queue.\n");
+      prev->next = curr->next;
+      length --;
+      delete(curr);
+
+   }
+
+   unsigned int fetchSize(void)
+   {
+      return length;
+   }
+
+};
+
+/*--------------------------------------------------------------------------*/
 /* SCHEDULER */
 /*--------------------------------------------------------------------------*/
+
 
 class Scheduler {
 
   /* The scheduler may need private members... */
-  
+protected:
+
+  schedulerQueue *readyQueue = nullptr;
+
 public:
 
    Scheduler();
@@ -90,7 +237,17 @@ public:
       Graciously handle the case where the thread wants to terminate itself.*/
   
 };
-	
-	
+
+// Class to implement the Round Robin Scheduling mechanism.
+class RoundRobinScheduler: public Scheduler
+{
+public:
+   // Constructor.
+   RoundRobinScheduler(void);
+
+   // Method to signal EOI to the Master Interrupt Controller
+   // and call base class yield.
+   virtual void yield(void);
+};
 
 #endif
