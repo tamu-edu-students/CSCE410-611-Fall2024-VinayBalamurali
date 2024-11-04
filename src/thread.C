@@ -76,6 +76,9 @@ static void thread_shutdown() {
     /* Let's not worry about it for now. 
        This means that we should have non-terminating thread functions. 
     */
+
+   // Terminate current thread, delete its context and
+   // yield CPU to the thread at the head of ready queue.
    SYSTEM_SCHEDULER->terminate(current_thread);
    delete current_thread;
    SYSTEM_SCHEDULER->yield();

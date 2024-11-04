@@ -23,7 +23,7 @@ class Scheduler;
 class EOQTimer : public SimpleTimer
 {
 private:
-    // Refernece to scheduler.
+    // Reference to scheduler.
     Scheduler *SYSTEM_SCHEDULER;
 
 public:

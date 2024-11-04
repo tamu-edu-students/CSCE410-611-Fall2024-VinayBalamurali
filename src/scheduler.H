@@ -63,7 +63,7 @@ class Node
 public:
 
    Thread *threadPtr;  // Pointer to the 'to be executed' thread.
-   struct Node *next;  // Pointer to next node.
+   Node *next;  // Pointer to next node.
 
 public:
 
@@ -82,6 +82,7 @@ class schedulerQueue
 {
 
 private:
+
    Node *head;  // 'Head' or 'front' of queue.
    Node *tail;  // 'Tail' or 'rear' of queue.
    unsigned int length;  // size of queue.
@@ -186,6 +187,8 @@ public:
 
    }
 
+   // Method to fetch the number
+   // of elements in the queue.
    unsigned int fetchSize(void)
    {
       return length;
@@ -247,7 +250,7 @@ public:
 
    // Method to signal EOI to the Master Interrupt Controller
    // and call base class yield.
-   virtual void yield(void);
+   virtual void yield(void) override;
 };
 
 #endif
