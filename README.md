@@ -1,2 +1,4 @@
-# CSCE410-611-Fall2024-VinayBalamurali
-Operating Systems class Machine Problems
+# MP5: Kernel-Level Thread Scheduling
+
+1. Read _./docs/design.pdf_ for more details.
+2. Ouputs are present under _./outputs_
