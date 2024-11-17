@@ -47,11 +47,11 @@ private:
 
      unsigned int disk_size;      /* In Byte */
 
+protected:
      void issue_operation(DISK_OPERATION _op, unsigned long _block_no);
      /* Send a sequence of commands to the controller to initialize the READ/WRITE 
-        operation. This operation is called by read() and write(). */ 
-        
-     
+        operation. This operation is called by read() and write(). */
+
 protected:
      /* -- HERE WE CAN DEFINE THE BEHAVIOR OF DERIVED DISKS */ 
 
