@@ -43,7 +43,18 @@ class Thread;
 class NonBlockingDisk : public SimpleDisk {
 
 private:
+   // To implement fitler lock.
+   int *level;
+   int *victim;
    schedulerQueue *ioBlockedQueue = nullptr;
+
+   // Methods to acuire and release locks.
+   // This is done using the Filter Lock algorithm.
+   void acquireLock(void);
+   void releaseLock(void);
+
+   // Internal method to implement FilterLock.
+   bool checkIfEqualOrGreater(int currentThread, int index);
 
 public:
    NonBlockingDisk(DISK_ID _disk_id, unsigned int _size); 
