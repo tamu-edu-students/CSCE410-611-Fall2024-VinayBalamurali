@@ -56,6 +56,8 @@ NonBlockingDisk::NonBlockingDisk(DISK_ID _disk_id, unsigned int _size)
 
 bool NonBlockingDisk::checkIfEqualOrGreater(int currentThread, int index)
 {
+    // Verify whether any thread has higher priority when compared to the
+    // current thread.
     for (int i = 0; i < maxThreads; i++)
     {
         if ((i != currentThread) && (level[i] >= index))
@@ -74,9 +76,11 @@ void NonBlockingDisk::acquireLock(void)
     int threadID = Thread::CurrentThread()->ThreadId();
     for (int i = 0; i < (maxThreads - 1); i++)
     {
-        level[threadID] = i;
-        victim[i] = threadID;
+        level[threadID] = i; // set currrent thread.
+        victim[i] = threadID; // mark current thread as the victim.
 
+        // Acquire the lock if there is no thread with a higher level.
+        // Otherwise busy loop.
         while (checkIfEqualOrGreater(threadID, i) &&
                (victim[i] == threadID));
     }
@@ -89,7 +93,7 @@ void NonBlockingDisk::acquireLock(void)
 void NonBlockingDisk::releaseLock(void)
 {
     int threadID = Thread::CurrentThread()->ThreadId();
-    level[threadID] = -1;
+    level[threadID] = -1; // set current level to -1.
 
     Console::puts("Lock released\n");
 
@@ -98,6 +102,7 @@ void NonBlockingDisk::releaseLock(void)
 
 bool NonBlockingDisk::isThreadReady(void)
 {
+    // Call base class is_ready() and ensure the queue is not empty.
     if ((is_ready()) && (ioBlockedQueue->fetchSize() > 0))
     {
         return true;
@@ -127,8 +132,6 @@ Thread* NonBlockingDisk::scheduleBlockedThread(void)
 
 void NonBlockingDisk::wait_until_ready(void)
 {
-    Console::puts("Calling Non Blocking NonBlockingDisk::wait_until_ready.\n");
-
     // During Testing it was noticed that the interrupts after read/write are generated
     // instantaneously, indicating that the implementation of 'blocked queue' never
     // came into play.
@@ -145,12 +148,14 @@ void NonBlockingDisk::wait_until_ready(void)
 
 void NonBlockingDisk::read(unsigned long _block_no, unsigned char * _buf)
 {
+    // Acquire lock before accessing disk.
     acquireLock();
     issue_operation(DISK_OPERATION::READ, _block_no);
     releaseLock();
 
     wait_until_ready();
 
+    // Acquire lock before accessing disk.
     /* read data from port */
     acquireLock();
     int i;
@@ -167,12 +172,14 @@ void NonBlockingDisk::read(unsigned long _block_no, unsigned char * _buf)
 
 void NonBlockingDisk::write(unsigned long _block_no, unsigned char * _buf)
 {
+    // Acquire lock before accessing disk.
     acquireLock();
     issue_operation(DISK_OPERATION::WRITE, _block_no);
     releaseLock();
 
     wait_until_ready();
 
+    // Acquire lock before accessing disk.
     /* write data to port */
     acquireLock();
     int i;

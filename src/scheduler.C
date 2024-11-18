@@ -69,7 +69,7 @@ void Scheduler::yield(void)
     // If it is, add it back to the ready queue.
     if (SYSTEM_DISK->isThreadReady())
     {
-        Console::puts("Thread is ready and adding back to ready queue now\n");
+        Console::puts("Thread is ready. Adding back to ready queue now.\n");
         Thread *ioCompletedThread = SYSTEM_DISK->scheduleBlockedThread();
 
         if (ioCompletedThread != nullptr)

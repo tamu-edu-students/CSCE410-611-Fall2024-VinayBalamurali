@@ -73,10 +73,15 @@ public:
    virtual void write(unsigned long _block_no, unsigned char * _buf);
    /* Writes 512 Bytes from the buffer to the given block on the disk. */
 
+   // Override base class method.
    virtual void wait_until_ready(void) override;
 
+   // Method to check if a thread is ready tp be added back to the
+   // Ready Queue.
    bool isThreadReady(void);
 
+   // Method to pick a thread from the blocked queue, to be added
+   // back to the ready queue.
    Thread* scheduleBlockedThread(void);
 
 };
