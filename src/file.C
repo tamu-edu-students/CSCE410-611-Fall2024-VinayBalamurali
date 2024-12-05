@@ -26,44 +26,100 @@
 /* CONSTRUCTOR/DESTRUCTOR */
 /*--------------------------------------------------------------------------*/
 
-File::File(FileSystem *_fs, int _id) {
+File::File(FileSystem *_fs, int _id)
+{
     Console::puts("Opening file.\n");
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-File::~File() {
+    this->fs = _fs;
+    this->fileId = _id;
+    this->Reset();
+
+    this->inode = fs->LookupFile(fileId);
+    if (inode == nullptr)
+    {
+        Console::puts("Failed to obtain inode for the file!\n");
+        assert(false);
+    }
+
+    fs->readBlockFromDisk(inode->blockNo, block_cache);
+
+} // File::File
+
+
+File::~File()
+{
     Console::puts("Closing file.\n");
     /* Make sure that you write any cached data to disk. */
     /* Also make sure that the inode in the inode list is updated. */
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
+
+    fs->writeBlockToDisk(inode->blockNo, block_cache);
+
+} // File::~File
 
 /*--------------------------------------------------------------------------*/
 /* FILE FUNCTIONS */
 /*--------------------------------------------------------------------------*/
 
-int File::Read(unsigned int _n, char *_buf) {
+int File::Read(unsigned int _n, char *_buf)
+{
     Console::puts("reading from file\n");
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-int File::Write(unsigned int _n, const char *_buf) {
+    int count;
+    for (count = 0; count < _n; count++)
+    {
+        if (EoF())
+        {
+            break;
+        }
+
+        _buf[count] = block_cache[currPos];
+        currPos++;
+    }
+
+    return count;
+
+} // File::Read
+
+
+int File::Write(unsigned int _n, const char *_buf)
+{
     Console::puts("writing to file\n");
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-void File::Reset() {
+    int count;
+    for (count  = 0; count < _n; count++)
+    {
+        if (EoF())
+        {
+            break;
+        }
+
+        block_cache[currPos] = _buf[count];
+        currPos;
+    }
+
+    return count;
+
+} // File::Write
+
+
+void File::Reset()
+{
     Console::puts("resetting file\n");
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-bool File::EoF() {
+    currPos = 0;
+
+} // File::Reset
+
+
+bool File::EoF()
+{
     Console::puts("checking for EoF\n");
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
+
+    if (currPos >= SimpleDisk::BLOCK_SIZE)
+    {
+        return true;
+    }
+
+    return false;
+
+} // File::EoF

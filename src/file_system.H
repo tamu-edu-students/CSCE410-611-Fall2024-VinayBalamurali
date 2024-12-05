@@ -47,6 +47,8 @@ private:
 
 	/* You will need additional information in the inode, such as allocation
 	   information. */
+	bool isAllocated;
+	int blockNo;
 
 	FileSystem* fs; // It may be handy to have a pointer to the File system.
 	// For example when you need a new block or when you want
@@ -81,7 +83,7 @@ private:
 	static constexpr unsigned int MAX_INODES = SimpleDisk::BLOCK_SIZE / sizeof(Inode);
 	/* Just as an example; you can store MAX_INODES in a single INODES block */
 
-	Inode* inodes; 
+	Inode* inodes;
 	/* The inode list */
 
 	unsigned char* free_blocks;
@@ -91,10 +93,10 @@ private:
 	   If you reserve one block to store the "free list", you can handle a file system up to
 	   256kB. (Large enough for a proof of concept.) */
 
-	   // short GetFreeInode();
-	   // int GetFreeBlock();
-	   /* It may be helpful to two functions to hand out free inodes in the inode list and free
-		  blocks. These functions also come useful to class Inode and File. */
+	short GetFreeInode();
+	int GetFreeBlock();
+	/* It may be helpful to two functions to hand out free inodes in the inode list and free
+		blocks. These functions also come useful to class Inode and File. */
 
 public:
 	FileSystem();
@@ -120,5 +122,9 @@ public:
 
 	bool DeleteFile(int _file_id);
 	/* Delete file with given id in the file system; free any disk block occupied by the file. */
+
+	void readBlockFromDisk(int blockNo, unsigned char *buffer);
+
+	void writeBlockToDisk(int blockNo, unsigned char *buffer);
 };
 #endif

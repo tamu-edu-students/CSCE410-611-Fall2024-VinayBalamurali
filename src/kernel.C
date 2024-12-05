@@ -124,11 +124,11 @@ void exercise_file_system(FileSystem* _file_system, unsigned int _iteration_no) 
 		Console::puts("Writing into File 1 and File 2\n");
 
 		/* -- Write into File 1 -- */
-		file1.Write(20, (_iteration_no % 2 == 0) ? STRING1 : STRING2);
+		file1.Write(20, ((_iteration_no % 2 == 0) ? STRING1 : STRING2));
 
 		/* -- Write into File 2 -- */
 
-		file2.Write(20, (_iteration_no % 2 == 0) ? STRING2 : STRING1);
+		file2.Write(20, ((_iteration_no % 2 == 0) ? STRING2 : STRING1));
 
 		/* -- Files will get automatically closed when we leave scope  -- */
 
@@ -282,7 +282,7 @@ int main() {
 	Console::puts("EXCELLENT! Your File system seems to work correctly. Congratulations!!\n");
 	/* -- AND ALL THE REST SHOULD FOLLOW ... */
 
-	assert(false); /* WE SHOULD NEVER REACH THIS POINT. */
+	for (;;);
 
 	/* -- WE DO THE FOLLOWING TO KEEP THE COMPILER HAPPY. */
 	return 1;

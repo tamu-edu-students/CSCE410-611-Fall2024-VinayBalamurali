@@ -14,6 +14,9 @@
 
     /* -- (none) -- */
 
+#define INODE_LIST_BLOCK 0
+#define FREE_LIST_BLOCK  1
+
 /*--------------------------------------------------------------------------*/
 /* INCLUDES */
 /*--------------------------------------------------------------------------*/
@@ -37,62 +40,236 @@
 /* CONSTRUCTOR */
 /*--------------------------------------------------------------------------*/
 
-FileSystem::FileSystem() {
+FileSystem::FileSystem()
+{
     Console::puts("In file system constructor.\n");
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-FileSystem::~FileSystem() {
+    inodes = new Inode[MAX_INODES];
+    free_blocks = new unsigned char[SimpleDisk::BLOCK_SIZE];
+
+} // FileSystem::FileSystem
+
+
+FileSystem::~FileSystem()
+{
     Console::puts("unmounting file system\n");
     /* Make sure that the inode list and the free list are saved. */
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
+
+    disk->write(INODE_LIST_BLOCK, (unsigned char *)inodes);
+    disk->write(FREE_LIST_BLOCK, free_blocks);
+
+    delete [] inodes;
+    delete [] free_blocks;
+
+} // FileSystem::~FileSystem
 
 
 /*--------------------------------------------------------------------------*/
 /* FILE SYSTEM FUNCTIONS */
 /*--------------------------------------------------------------------------*/
 
+short FileSystem::GetFreeInode()
+{
+    for (int i = 0; i < MAX_INODES; i++)
+    {
+        if (inodes[i].isAllocated == false)
+        {
+            inodes[i].isAllocated = true;
+            return i;
+        }
+    }
 
-bool FileSystem::Mount(SimpleDisk * _disk) {
+    return -1;
+
+} // FileSystem::GetFreeInode
+
+
+int FileSystem::GetFreeBlock()
+{
+    for (int i = 0; i < SimpleDisk::BLOCK_SIZE; i++)
+    {
+        if (free_blocks[i] == 'f')
+        {
+            free_blocks[i] = 'u';
+            return i;
+        }
+    }
+
+    return -1;
+
+} // FileSystem::GetFreeBlock
+
+
+bool FileSystem::Mount(SimpleDisk * _disk)
+{
     Console::puts("mounting file system from disk\n");
     /* Here you read the inode list and the free list into memory */
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-bool FileSystem::Format(SimpleDisk * _disk, unsigned int _size) { // static!
+    this->disk = _disk;
+
+    if (disk == nullptr)
+    {
+        Console::puts("Failed to find disk! Cannot mount file system.\n");
+        return false;
+    }
+
+    unsigned char *tempBuf;
+    disk->read(INODE_LIST_BLOCK, tempBuf);
+    inodes = (Inode *)tempBuf;
+
+    disk->read(FREE_LIST_BLOCK, free_blocks);
+
+    // If the Inode Block or the Free Block is marked free, then the File System is
+    // not present or is corrupted. In either case, we cannot proceed.
+    if (free_blocks[INODE_LIST_BLOCK] == 'f' || free_blocks[FREE_LIST_BLOCK] == 'f')
+    {
+        Console::puts("File System not present in disk! Failed to mount disk.\n");
+        return false;
+    }
+
+    return true;
+
+} // FileSystem::Mount
+
+
+bool FileSystem::Format(SimpleDisk * _disk, unsigned int _size) // static!
+{
     Console::puts("formatting disk\n");
     /* Here you populate the disk with an initialized (probably empty) inode list
        and a free list. Make sure that blocks used for the inodes and for the free list
        are marked as used, otherwise they may get overwritten. */
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-Inode * FileSystem::LookupFile(int _file_id) {
+    Inode *inodeBuf;
+    inodeBuf = new Inode[MAX_INODES];
+    for (int i = 0; i < MAX_INODES; i++)
+    {
+        inodeBuf[i] = {};
+    }
+
+    _disk->write(INODE_LIST_BLOCK, (unsigned char *)inodeBuf);
+    delete [] inodeBuf;
+
+    unsigned char *freeBlockBuf;
+    freeBlockBuf = new unsigned char[SimpleDisk::BLOCK_SIZE];
+
+    // First two blocks are used.
+    freeBlockBuf[INODE_LIST_BLOCK] = 'u';
+    freeBlockBuf[FREE_LIST_BLOCK] = 'u';
+
+    for (int i = 2; i < SimpleDisk::BLOCK_SIZE; i++)
+    {
+        // Mark free blocks.
+        freeBlockBuf[i] = 'f';
+    }
+
+    _disk->write(FREE_LIST_BLOCK, freeBlockBuf);
+    delete [] freeBlockBuf;
+
+    return true;
+
+} // FileSystem::Format
+
+
+Inode * FileSystem::LookupFile(int _file_id)
+{
     Console::puts("looking up file with id = "); Console::puti(_file_id); Console::puts("\n");
     /* Here you go through the inode list to find the file. */
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-bool FileSystem::CreateFile(int _file_id) {
+    for (int i = 0; i < MAX_INODES; i++)
+    {
+        if (inodes[i].id == _file_id)
+        {
+            return &inodes[i];
+        }
+    }
+
+    return nullptr;
+
+} // FileSystem::LookupFile
+
+
+bool FileSystem::CreateFile(int _file_id)
+{
     Console::puts("creating file with id:"); Console::puti(_file_id); Console::puts("\n");
     /* Here you check if the file exists already. If so, throw an error.
        Then get yourself a free inode and initialize all the data needed for the
        new file. After this function there will be a new file on disk. */
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
 
-bool FileSystem::DeleteFile(int _file_id) {
+    // First check whether file already exists.
+    if (LookupFile(_file_id))
+    {
+        Console::puts("File already exists!\n");
+        return false;
+    }
+
+    int freeBlockNo = GetFreeBlock();
+    if (freeBlockNo == -1)
+    {
+        Console::puts("Out of Free Blocks! Cannot create file...\n");
+        return false;
+    }
+
+    int inodeIndex = GetFreeInode();
+    if (inodeIndex == -1)
+    {
+        Console::puts("Out of inodes! Cannot create file...\n");
+        return false;
+    }
+
+    inodes[inodeIndex].fs = this;
+    inodes[inodeIndex].id = _file_id;
+    inodes[inodeIndex].blockNo = freeBlockNo;
+
+    // check if necessary??
+    //inodes[inodeIndex].isAllocated = true;
+
+    disk->write(INODE_LIST_BLOCK, (unsigned char *)inodes);
+    disk->write(FREE_LIST_BLOCK, free_blocks);
+
+    return true;
+
+} // FileSystem::CreateFile
+
+
+bool FileSystem::DeleteFile(int _file_id)
+{
     Console::puts("deleting file with id:"); Console::puti(_file_id); Console::puts("\n");
     /* First, check if the file exists. If not, throw an error. 
        Then free all blocks that belong to the file and delete/invalidate 
        (depending on your implementation of the inode list) the inode. */
-    Console::puts("FUNCTION NOT IMPLEMENTED\n");
-    assert(false);
-}
+
+    Inode *inode = LookupFile(_file_id);
+    if (inode == nullptr)
+    {
+        Console::puts("Failed to delete file! File does not exist.\n");
+        return false;
+    }
+
+    free_blocks[inode->blockNo] = 'f';
+
+    // Inode is free to be allocated to another block.
+    inode->isAllocated = false;
+
+    inode->blockNo = -1;
+    inode->id = -1;
+
+    disk->write(INODE_LIST_BLOCK, (unsigned char *)inodes);
+    disk->write(FREE_LIST_BLOCK, free_blocks);
+
+    return true;
+
+} // FileSystem::DeleteFile
+
+
+void FileSystem::readBlockFromDisk(int blockNo, unsigned char *buffer)
+{
+    disk->read(blockNo, buffer);
+
+} // FileSystem::readBlockFromDisk
+
+
+void FileSystem::writeBlockToDisk(int blockNo, unsigned char *buffer)
+{
+    disk->write(blockNo, buffer);
+
+} // FileSystem::writeBlockToDisk
