@@ -49,6 +49,7 @@ private:
 	   information. */
 	bool isAllocated;
 	int blockNo;
+	unsigned int size;
 
 	FileSystem* fs; // It may be handy to have a pointer to the File system.
 	// For example when you need a new block or when you want
@@ -94,9 +95,7 @@ private:
 	   256kB. (Large enough for a proof of concept.) */
 
 	short GetFreeInode();
-	int GetFreeBlock();
-	/* It may be helpful to two functions to hand out free inodes in the inode list and free
-		blocks. These functions also come useful to class Inode and File. */
+	/* Get a free inode for storing file metadata */
 
 public:
 	FileSystem();
@@ -124,7 +123,16 @@ public:
 	/* Delete file with given id in the file system; free any disk block occupied by the file. */
 
 	void readBlockFromDisk(int blockNo, unsigned char *buffer);
+	/* Read a given block from disk */
 
 	void writeBlockToDisk(int blockNo, unsigned char *buffer);
+	/* Write to a given block from disk */
+
+	int GetFreeBlock();
+	/* Give out free blocks and marks them as used in the bitmap */
+
+	void writeInodeListToDisk(void);
+	/* Write Inode List to disk */
+
 };
 #endif

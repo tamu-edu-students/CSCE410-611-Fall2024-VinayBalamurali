@@ -12,8 +12,6 @@
 /* DEFINES */
 /*--------------------------------------------------------------------------*/
 
-    /* -- (none) -- */
-
 #define INODE_LIST_BLOCK 0
 #define FREE_LIST_BLOCK  1
 
@@ -55,8 +53,8 @@ FileSystem::~FileSystem()
     Console::puts("unmounting file system\n");
     /* Make sure that the inode list and the free list are saved. */
 
-    disk->write(INODE_LIST_BLOCK, (unsigned char *)inodes);
-    disk->write(FREE_LIST_BLOCK, free_blocks);
+    writeBlockToDisk(INODE_LIST_BLOCK, (unsigned char *)inodes);
+    writeBlockToDisk(FREE_LIST_BLOCK, free_blocks);
 
     delete [] inodes;
     delete [] free_blocks;
@@ -139,6 +137,8 @@ bool FileSystem::Format(SimpleDisk * _disk, unsigned int _size) // static!
        and a free list. Make sure that blocks used for the inodes and for the free list
        are marked as used, otherwise they may get overwritten. */
 
+
+    // Initilaize and store empty the 'Inode' list.
     Inode *inodeBuf;
     inodeBuf = new Inode[MAX_INODES];
     for (int i = 0; i < MAX_INODES; i++)
@@ -147,8 +147,11 @@ bool FileSystem::Format(SimpleDisk * _disk, unsigned int _size) // static!
     }
 
     _disk->write(INODE_LIST_BLOCK, (unsigned char *)inodeBuf);
+
+    // reclaim heap memory.
     delete [] inodeBuf;
 
+    // Initialize and store the free block bitmap.
     unsigned char *freeBlockBuf;
     freeBlockBuf = new unsigned char[SimpleDisk::BLOCK_SIZE];
 
@@ -163,6 +166,8 @@ bool FileSystem::Format(SimpleDisk * _disk, unsigned int _size) // static!
     }
 
     _disk->write(FREE_LIST_BLOCK, freeBlockBuf);
+
+    // reclaim heap memory.
     delete [] freeBlockBuf;
 
     return true;
@@ -202,8 +207,10 @@ bool FileSystem::CreateFile(int _file_id)
         return false;
     }
 
-    int freeBlockNo = GetFreeBlock();
-    if (freeBlockNo == -1)
+    // Get a block to hold the indices which in contain the
+    // data blocks to store a file.
+    int dataIndexBlock = GetFreeBlock();
+    if (dataIndexBlock == -1)
     {
         Console::puts("Out of Free Blocks! Cannot create file...\n");
         return false;
@@ -218,13 +225,25 @@ bool FileSystem::CreateFile(int _file_id)
 
     inodes[inodeIndex].fs = this;
     inodes[inodeIndex].id = _file_id;
-    inodes[inodeIndex].blockNo = freeBlockNo;
-
-    // check if necessary??
-    //inodes[inodeIndex].isAllocated = true;
+    inodes[inodeIndex].blockNo = dataIndexBlock;
+    inodes[inodeIndex].size = 0;
 
     disk->write(INODE_LIST_BLOCK, (unsigned char *)inodes);
     disk->write(FREE_LIST_BLOCK, free_blocks);
+
+    // Store the indices of all the data blocks used to store a file.
+    unsigned char *dataIndirectBuffer;
+    dataIndirectBuffer = new unsigned char[SimpleDisk::BLOCK_SIZE];
+    for (int i = 0; i < SimpleDisk::BLOCK_SIZE; i++)
+    {
+        // Initially all indices are set to 0xFF.
+        dataIndirectBuffer[i] = 255;
+    }
+
+    writeBlockToDisk(dataIndexBlock, (unsigned char *)dataIndirectBuffer);
+
+    // reclaim heap memory.
+    delete [] dataIndirectBuffer;
 
     return true;
 
@@ -253,8 +272,8 @@ bool FileSystem::DeleteFile(int _file_id)
     inode->blockNo = -1;
     inode->id = -1;
 
-    disk->write(INODE_LIST_BLOCK, (unsigned char *)inodes);
-    disk->write(FREE_LIST_BLOCK, free_blocks);
+    writeBlockToDisk(INODE_LIST_BLOCK, (unsigned char *)inodes);
+    writeBlockToDisk(FREE_LIST_BLOCK, free_blocks);
 
     return true;
 
@@ -273,3 +292,8 @@ void FileSystem::writeBlockToDisk(int blockNo, unsigned char *buffer)
     disk->write(blockNo, buffer);
 
 } // FileSystem::writeBlockToDisk
+
+void FileSystem::writeInodeListToDisk(void)
+{
+    writeBlockToDisk(INODE_LIST_BLOCK, (unsigned char *)inodes);
+}

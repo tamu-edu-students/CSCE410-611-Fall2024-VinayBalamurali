@@ -100,6 +100,65 @@ FileSystem* FILE_SYSTEM;
 /* CODE TO EXERCISE THE FILE SYSTEM */
 /*--------------------------------------------------------------------------*/
 
+void exercise_larger_file_system(FileSystem* _file_system)
+{
+	assert(_file_system->CreateFile(5));
+
+	const char* randomString =
+    "2XV77nl\\@zo{Gv)3aO))ad\\?&1D_ub(Ni;nMK'y~k9xTaNbB>zc5s4b@u0|s]`eMk.){#JM&puP%^"
+    "TOGH|,gb6zYgg2-s/aQ*@Z:xdCCZe=uySO9u_9@!BQ6F2~$:GycqiW]TF!%Nj_h`d<lkm\"):(+\\[O^8"
+    "Rf+al!nc0(Ls$4OubTi@GB!nz?/[o5$1hKx0dduZtSvK#VIe;>+F[Y}BN7I?-As?l;mO~`a~R-CayIb,"
+    "IW8\"|jUwbS&]&uB$}QPkiJfAhS7'N$A/\\j;}4yc7N{WO%78q<4J>MDM-[#\\.]C;WWw.e-Ea/w7<Za%"
+    "{6]C!%S;-rs)*D}ER$y^et5}Np&b{*{wKDmHf'gbw*CIa*Zc&j!~H|Sm/dQe'10?gwuN~iIE.)W%I'_"
+    ">;U@BIZdoVkT.9=yQ)/%R1I>\\RRGaS+-Gzt`CvSw^~eE,$nl=!z7xscS\\yr=W/p1Aj]7~g(^KldiJko"
+    ">B(bq{b:d+5zC<P4A]+=M!<[YNuE)su[b\\g\"OQ=z=z2mIx^>]\'&LMj;*YYd-6jf<L?de*y8Ks~qJfdO"
+    "'F,'RY4(|YQAX=#e0H\"/@yFRmB[uME:nAcs+uvwD.Fi!OsWmIJ.xx7cs+*(5P9<\\Sg._JmCBA$3Y:,u"
+    "X6^4~>YI{g)Cv+_vh6=0&H&MY;/EjmM7:|\\P#3EV[#+C]-(vF;Adc)<iI,-PQ@1o/~\"&P1?SU-Oqtcy"
+    "@r-<KRW_IGQHmi{H]J.'WE3,}3<KUHi*ph<r@w%DZ#>No?3?zL#],UL[/E=+}Pi2wnzbK)@_}6%j]QDV"
+    "|CN.ke5\"w7Yob)<goTTa_KpJF:0`0y$U3Ufy6<pr(Mll=IOx*|HVsEfkih;FfA%E)'dMaSZsNCH-VMDU"
+    "sG8QFVsv&KYEahMakWBHYT+>dQRh4!,!X3dAudO)g\\ZJC(0(XTRkC}^OFm<9?z:G?40UM}r;VlheyA9e"
+    "J`vgP(=s0UE]}VGD75^\"M@.Z;#<DB_cH.r\"_p~'[>#S}z:Wa(v'iDI$Q#Y{g|\"BJ..E!nU~Tqasdasd";
+
+	{
+		File file(_file_system, 5);
+
+		Console::puts("Writing into File...\n");
+
+		Console::puts("Write file");
+
+		file.Write(1029, randomString);
+
+		Console::puts("Closing file...\n");
+	}
+
+	{
+		Console::puts("Opening File again\n");
+
+		File file(_file_system, 5);
+
+		file.Reset();
+		char result[1029];
+
+		assert(file.Read(1029, result) == 1029);
+
+		for (int i = 0; i < 1029; i++)
+		{
+			assert(result[i] == randomString[i]);
+		}
+
+		Console::puts("SUCCESS!!\n");
+
+		Console::puts("Closing File again\n");
+	}
+
+	Console::puts("Deleting file...\n");
+
+	assert(_file_system->DeleteFile(5));
+
+	assert(_file_system->LookupFile(5) == nullptr);
+}
+
+
 void exercise_file_system(FileSystem* _file_system, unsigned int _iteration_no) {
 
 	const char* STRING1 = "01234567890123456789";
@@ -281,6 +340,14 @@ int main() {
 
 	Console::puts("EXCELLENT! Your File system seems to work correctly. Congratulations!!\n");
 	/* -- AND ALL THE REST SHOULD FOLLOW ... */
+
+	Console::puts("\n\n\n-.********************************************************.-\n\n\n");
+
+    Console::puts("Now we test with a larger file!\n");
+
+	exercise_larger_file_system(FILE_SYSTEM);
+
+    Console::puts("EXCELLENT! Your File system seems to work correctlyeven with larger files. \n Congratulations!!\n");
 
 	for (;;);
 

@@ -47,7 +47,7 @@ private:
     FileSystem *fs;
     Inode *inode;
     int fileId;
-    int currPos;
+    unsigned int currPos;
 
     /* You will need a reference to the inode, maybe even a reference to the 
        file system. 
@@ -60,6 +60,8 @@ private:
        you can cache here. You read the data from disk to cache whenever you open the
        file, and you write the data to disk whenever you close the file. 
     */
+
+   unsigned char dataIndexBlock[SimpleDisk::BLOCK_SIZE];
 
 public:
 
