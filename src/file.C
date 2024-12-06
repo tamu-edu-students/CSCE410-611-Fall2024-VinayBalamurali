@@ -200,7 +200,7 @@ bool File::EoF()
 {
     Console::puts("checking for EoF\n");
 
-    if (currPos >= SimpleDisk::BLOCK_SIZE)
+    if (currPos >= (inode->size))
     {
         return true;
     }

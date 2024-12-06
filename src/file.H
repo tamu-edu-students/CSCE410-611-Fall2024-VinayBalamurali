@@ -44,10 +44,10 @@ class File  {
     
 private:
     /* -- your file data structures here ... */
-    FileSystem *fs;
-    Inode *inode;
-    int fileId;
-    unsigned int currPos;
+    FileSystem *fs; // pointer to File System object.
+    Inode *inode;   // Pointer to Inode object for the given file.
+    int fileId;     // Identifier for the given file.
+    unsigned int currPos;  // Current position of the seek pointer,
 
     /* You will need a reference to the inode, maybe even a reference to the 
        file system. 
@@ -61,6 +61,7 @@ private:
        file, and you write the data to disk whenever you close the file. 
     */
 
+   /* Index Table of the file. */
    unsigned char dataIndexBlock[SimpleDisk::BLOCK_SIZE];
 
 public:

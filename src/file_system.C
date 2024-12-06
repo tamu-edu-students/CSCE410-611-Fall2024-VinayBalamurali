@@ -296,4 +296,5 @@ void FileSystem::writeBlockToDisk(int blockNo, unsigned char *buffer)
 void FileSystem::writeInodeListToDisk(void)
 {
     writeBlockToDisk(INODE_LIST_BLOCK, (unsigned char *)inodes);
-}
+
+} // FileSystem::writeInodeListToDisk

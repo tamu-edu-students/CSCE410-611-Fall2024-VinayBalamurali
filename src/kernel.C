@@ -343,11 +343,11 @@ int main() {
 
 	Console::puts("\n\n\n-.********************************************************.-\n\n\n");
 
-    Console::puts("Now we test with a larger file!\n");
+	Console::puts("Now we test with a larger file!\n");
 
 	exercise_larger_file_system(FILE_SYSTEM);
 
-    Console::puts("EXCELLENT! Your File system seems to work correctlyeven with larger files. \n Congratulations!!\n");
+	Console::puts("EXCELLENT! Your File system seems to work correctlyeven with larger files. \n Congratulations!!\n");
 
 	for (;;);
 

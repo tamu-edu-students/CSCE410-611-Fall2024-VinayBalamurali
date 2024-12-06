@@ -47,9 +47,9 @@ private:
 
 	/* You will need additional information in the inode, such as allocation
 	   information. */
-	bool isAllocated;
-	int blockNo;
-	unsigned int size;
+	bool isAllocated; // to check whether this inode is being used.
+	int blockNo;      // block where the index table for this inode is held.
+	unsigned int size;  // size of the file in bytes.
 
 	FileSystem* fs; // It may be handy to have a pointer to the File system.
 	// For example when you need a new block or when you want
@@ -78,8 +78,8 @@ class FileSystem
 private:
 	/* -- DEFINE YOUR FILE SYSTEM DATA STRUCTURES HERE. */
 
-	SimpleDisk* disk;
-	unsigned int size;
+	SimpleDisk* disk;   // pointer to disk object.
+	unsigned int size;  // size of File System.
 
 	static constexpr unsigned int MAX_INODES = SimpleDisk::BLOCK_SIZE / sizeof(Inode);
 	/* Just as an example; you can store MAX_INODES in a single INODES block */
