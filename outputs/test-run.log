@@ -1,0 +1,1402 @@
+Darwin
+qemu-system-x86_64 -kernel kernel.bin -serial stdio \
+-device piix3-ide,id=ide -drive id=disk,file=c.img,format=raw,if=none -device ide-hd,drive=disk,bus=ide.0
+Installed exception handler at ISR <0>
+Allocating Memory Pool... done
+Installed interrupt handler at IRQ <0>
+Installed interrupt handler at IRQ <14>
+In file system constructor.
+Hello World!
+before formatting...formatting disk
+formatting completed
+before mounting...mounting file system from disk
+mounting completed
+exercise file system; iteration 0...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 4
+writing to file
+Allocated block: 5
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 1...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 6
+writing to file
+Allocated block: 7
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 2...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 8
+writing to file
+Allocated block: 9
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 3...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 10
+writing to file
+Allocated block: 11
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 4...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 12
+writing to file
+Allocated block: 13
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 5...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 14
+writing to file
+Allocated block: 15
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 6...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 16
+writing to file
+Allocated block: 17
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 7...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 18
+writing to file
+Allocated block: 19
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 8...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 20
+writing to file
+Allocated block: 21
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 9...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 22
+writing to file
+Allocated block: 23
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 10...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 24
+writing to file
+Allocated block: 25
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 11...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 26
+writing to file
+Allocated block: 27
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 12...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 28
+writing to file
+Allocated block: 29
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 13...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 30
+writing to file
+Allocated block: 31
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 14...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 32
+writing to file
+Allocated block: 33
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 15...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 34
+writing to file
+Allocated block: 35
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+One second has passed
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 16...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 36
+writing to file
+Allocated block: 37
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 17...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 38
+writing to file
+Allocated block: 39
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 18...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 40
+writing to file
+Allocated block: 41
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 19...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 42
+writing to file
+Allocated block: 43
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 20...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 44
+writing to file
+Allocated block: 45
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 21...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 46
+writing to file
+Allocated block: 47
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 22...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 48
+writing to file
+Allocated block: 49
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 23...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 50
+writing to file
+Allocated block: 51
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 24...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 52
+writing to file
+Allocated block: 53
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 25...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 54
+writing to file
+Allocated block: 55
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 26...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 56
+writing to file
+Allocated block: 57
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 27...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 58
+writing to file
+Allocated block: 59
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 28...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 60
+writing to file
+Allocated block: 61
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+exercise file system; iteration 29...
+Creating File 1 and File 2
+creating file with id:1
+looking up file with id = 1
+creating file with id:2
+looking up file with id = 2
+Opening File 1 and File 2
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Writing into File 1 and File 2
+writing to file
+Allocated block: 62
+writing to file
+Allocated block: 63
+Closing File 1 and File 2
+Closing file.
+Closing file.
+Opening File 1 and File 2 again
+Opening file.
+resetting file
+looking up file with id = 1
+Opening file.
+resetting file
+looking up file with id = 2
+Checking content of File 1 and File 2
+resetting file
+reading from file
+resetting file
+reading from file
+SUCCESS!!
+Closing File 1 and File 2 again
+Closing file.
+Closing file.
+Deleting File 1 and File 2
+deleting file with id:1
+looking up file with id = 1
+looking up file with id = 1
+deleting file with id:2
+looking up file with id = 2
+looking up file with id = 2
+iteration done
+EXCELLENT! Your File system seems to work correctly. Congratulations!!
+
+
+
+-.********************************************************.-
+
+
+Now we test with a larger file!
+creating file with id:5
+looking up file with id = 5
+Opening file.
+resetting file
+looking up file with id = 5
+Writing into File...
+Write filewriting to file
+Allocated block: 3
+Allocated block: 64
+Allocated block: 65
+Closing file...
+Closing file.
+Opening File again
+Opening file.
+resetting file
+looking up file with id = 5
+resetting file
+reading from file
+SUCCESS!!
+Closing File again
+Closing file.
+Deleting file...
+deleting file with id:5
+looking up file with id = 5
+looking up file with id = 5
+EXCELLENT! Your File system seems to work correctlyeven with larger files. 
+ Congratulations!!
+One second has passed
+One second has passed
+One second has passed
