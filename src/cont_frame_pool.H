@@ -49,12 +49,12 @@ private:
     unsigned long   nframes;       // Size of the frame pool
     unsigned long   info_frame_no; // Where do we store the management information?
 
-    ContFramePool *nextPool = NULL;
+    ContFramePool *nextPool = nullptr;
     static ContFramePool *headPool;
     
     /* ---- STATE MANAGEMENT */
     
-    enum class FrameState {Free, Used, HoS};
+    enum class FrameState {Free = 0x0, Used = 0x1, HoS = 0x3 };
 
     FrameState get_state(unsigned long _frame_no);
     void set_state(unsigned long _frame_no, FrameState _state);

@@ -74,7 +74,7 @@ int main() {
     
     /* ---- PROCESS POOL -- */
 
-/*  // In later machine problems, we will be using two pools. You may want to comment this out and test 
+    // In later machine problems, we will be using two pools. You may want to comment this out and test
     // the management of two pools.
 
     unsigned long n_info_frames = ContFramePool::needed_info_frames(PROCESS_POOL_SIZE);
@@ -86,7 +86,7 @@ int main() {
                                    process_mem_pool_info_frame);
     
     process_mem_pool.mark_inaccessible(MEM_HOLE_START_FRAME, MEM_HOLE_SIZE);
-*/
+
 
     /* -- MOST OF WHAT WE NEED IS SETUP. THE KERNEL CAN START. */
 

@@ -1,0 +1,73 @@
+Darwin
+qemu-system-x86_64 -kernel kernel.bin -serial stdio
+Frame Pool initialized
+start index = 1
+Frame Pool initialized
+Hello World!
+alloc_to_go = 32
+start index = 2
+alloc_to_go = 31
+start index = 3
+alloc_to_go = 30
+start index = 7
+alloc_to_go = 29
+start index = 10
+alloc_to_go = 28
+start index = 12
+alloc_to_go = 27
+start index = 13
+alloc_to_go = 26
+start index = 17
+alloc_to_go = 25
+start index = 20
+alloc_to_go = 24
+start index = 22
+alloc_to_go = 23
+start index = 23
+alloc_to_go = 22
+start index = 27
+alloc_to_go = 21
+start index = 30
+alloc_to_go = 20
+start index = 32
+alloc_to_go = 19
+start index = 33
+alloc_to_go = 18
+start index = 37
+alloc_to_go = 17
+start index = 40
+alloc_to_go = 16
+start index = 42
+alloc_to_go = 15
+start index = 43
+alloc_to_go = 14
+start index = 47
+alloc_to_go = 13
+start index = 50
+alloc_to_go = 12
+start index = 52
+alloc_to_go = 11
+start index = 53
+alloc_to_go = 10
+start index = 57
+alloc_to_go = 9
+start index = 60
+alloc_to_go = 8
+start index = 62
+alloc_to_go = 7
+start index = 63
+alloc_to_go = 6
+start index = 67
+alloc_to_go = 5
+start index = 70
+alloc_to_go = 4
+start index = 72
+alloc_to_go = 3
+start index = 73
+alloc_to_go = 2
+start index = 77
+alloc_to_go = 1
+start index = 80
+alloc_to_go = 0
+Testing is DONE. We will do nothing forever
+Feel free to turn off the machine now.
