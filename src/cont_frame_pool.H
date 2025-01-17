@@ -1,16 +1,16 @@
 /*
  File: cont_frame_pool.H
- 
+
  Author: R. Bettati
  Department of Computer Science
  Texas A&M University
- Date  : 17/02/04 
- 
+ Date  : 17/02/04
+
  Description: Management of the CONTIGUOUS Free-Frame Pool.
- 
+
  As opposed to a non-contiguous free-frame pool, here we can allocate
  a sequence of CONTIGUOUS frames.
- 
+
  */
 
 #ifndef _CONT_FRAME_POOL_H_                   // include file only once
@@ -27,6 +27,7 @@
 /*--------------------------------------------------------------------------*/
 
 #include "machine.H"
+#include "utils.H"
 
 /*--------------------------------------------------------------------------*/
 /* DATA STRUCTURES */
@@ -39,43 +40,30 @@
 /*--------------------------------------------------------------------------*/
 
 class ContFramePool {
-    
+
 private:
     /* -- DEFINE YOUR CONT FRAME POOL DATA STRUCTURE(s) HERE. */
-    
-    /* ---- Bag of created frame pools */
-    
-    static ContFramePool * head;
-    static ContFramePool * tail;    
- 
-    ContFramePool * next;
-    ContFramePool * prev;
-   
-    static void add_to_bag(ContFramePool * _new_pool);
-    static void remove_from_bag(ContFramePool * _pool);
-   
-    /* ---- Info about this frame pool */
-    unsigned char * bitmap;        // We implement the simple frame pool with a bitmap
+    unsigned char * bitMap;        // We implement the simple frame pool with a bitmap
+    unsigned int    nFreeFrames;   //
     unsigned long   base_frame_no; // Where does the frame pool start in phys mem?
     unsigned long   nframes;       // Size of the frame pool
-    unsigned long   info_frame_no; // First of the frames with meta data about pool.
-    
-    /* ---- State management */
-    
-    enum class FrameState {Free, Used, HoS, INVALID};
+    unsigned long   info_frame_no; // Where do we store the management information?
+
+    ContFramePool *nextPool = nullptr;
+    static ContFramePool *headPool;
+
+    /* ---- STATE MANAGEMENT */
+
+    enum class FrameState {Free = 0x0, Used = 0x1, HoS = 0x3 };
 
     FrameState get_state(unsigned long _frame_no);
     void set_state(unsigned long _frame_no, FrameState _state);
 
-    /* ---- Release function of the pool */
 
-    void pool_release_frames(unsigned long _first_frame_no);    
-    
-    
 public:
 
-    // The frame size is the same as the page size, duh...    
-    static const unsigned int FRAME_SIZE = Machine::PAGE_SIZE; 
+    // The frame size is the same as the page size, duh...
+    static const unsigned int FRAME_SIZE = Machine::PAGE_SIZE;
 
     ContFramePool(unsigned long _base_frame_no,
                   unsigned long _n_frames,
@@ -94,7 +82,7 @@ public:
      NOTE: This function must be called before the paging system
      is initialized.
      */
-    
+
     unsigned long get_frames(unsigned int _n_frames);
     /*
      Allocates a number of contiguous frames from the frame pool.
@@ -103,7 +91,7 @@ public:
      If successful, returns the frame number of the first frame.
      If fails, returns 0.
      */
-    
+
     void mark_inaccessible(unsigned long _base_frame_no,
                            unsigned long _n_frames);
     /*
@@ -112,7 +100,7 @@ public:
      _base_frame_no: Number of first frame to mark as inaccessible.
      _n_frames: Number of contiguous frames to mark as inaccessible.
      */
-    
+
     static void release_frames(unsigned long _first_frame_no);
     /*
      Releases a previously allocated contiguous sequence of frames
@@ -123,12 +111,7 @@ public:
      This function must first identify the correct frame pool and then call the frame
      pool's release_frame function.
      */
-    
-    bool contains(unsigned long _frame_no);
-    /* 
-    Returns whether the given frame is part of this frame pool.
-    */
-    
+
     static unsigned long needed_info_frames(unsigned long _n_frames);
     /*
      Returns the number of frames needed to manage a frame pool of size _n_frames.
